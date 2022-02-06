@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "incomes",
+  "info": {
+    "name": "income",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "required": true
+    },
+    "descriptions": {
+      "type": "text"
+    },
+    "amounts": {
+      "type": "decimal",
+      "required": true,
+      "min": 10
+    },
+    "attachment": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "tanggal": {
+      "type": "date",
+      "required": true
+    },
+    "wallet": {
+      "via": "incomes",
+      "model": "wallet"
+    }
+  }
+}

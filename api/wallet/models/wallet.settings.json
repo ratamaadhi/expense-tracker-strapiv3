@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wallets",
+  "info": {
+    "name": "wallet",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "descriptions": {
+      "type": "text",
+      "required": true,
+      "minLength": 3
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "balance": {
+      "type": "decimal"
+    },
+    "incomes": {
+      "collection": "income",
+      "via": "wallet"
+    },
+    "expenses": {
+      "collection": "expense"
+    },
+    "user": {
+      "via": "wallets",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

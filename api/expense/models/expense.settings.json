@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "expenses",
+  "info": {
+    "name": "expense",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "descriptions": {
+      "type": "text"
+    },
+    "amounts": {
+      "type": "decimal"
+    },
+    "attachment": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "tanggal": {
+      "type": "date",
+      "required": true
+    }
+  }
+}
